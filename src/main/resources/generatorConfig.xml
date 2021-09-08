@@ -1,0 +1,46 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 导入配置 -->
+    <properties resource="jdbc.properties"/>
+
+    <context id="localhost" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!-- 插件 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+
+        <!-- 用于指定注释生成器的类。-->
+        <!-- 如果自定义的话需要实现org.mybatis.generator.api.CommentGenerator接口并提供无参构造，默认为org.mybatis.generator.internal.DefaultCommentGenerator-->
+        <commentGenerator>
+            <property name="addRemarkComments" value="true"/>
+            <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${jdbc.driver}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}"/>
+
+<!--        用于指定Java 类型解析器的类。-->
+<!--        如果自定义的话需要实现org.mybatis.generator.api.JavaTypeResolver并提供无参构造，默认为org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl，它会将数据库类型 decimal 或 numberic 解析为 Integer 的 Java 类型-->
+        <javaTypeResolver>
+            <!-- 是否强制将数据库类型 decimal 或 numberic 解析为 BigDecimal 类型。
+        默认为false，会根据数据的小数点位数和长度来决定使用 Short、Integer、Long 或 BigDecimal。 -->
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="example.model" targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="example.mapper" targetProject="src/main/resources"/>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="example.mapper" targetProject="src/main/java"/>
+
+        <table schema="localschema" tableName="t_person">
+            <domainObjectRenamingRule searchString="^T" replaceString=""/>
+        </table>
+
+    </context>
+</generatorConfiguration>
