@@ -5,14 +5,13 @@
     <!-- 导入配置 -->
     <properties resource="jdbc.properties"/>
 
-    <context id="localhost" targetRuntime="MyBatis3" defaultModelType="flat">
+    <context id="default" targetRuntime="MyBatis3" defaultModelType="flat">
         <!-- 插件 -->
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
         <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
-
         <!-- 用于指定注释生成器的类。-->
         <!-- 如果自定义的话需要实现org.mybatis.generator.api.CommentGenerator接口并提供无参构造，默认为org.mybatis.generator.internal.DefaultCommentGenerator-->
         <commentGenerator>
