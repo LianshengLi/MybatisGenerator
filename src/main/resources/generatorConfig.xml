@@ -5,7 +5,7 @@
     <!-- 导入配置 -->
     <properties resource="jdbc.properties"/>
 
-    <context id="default" targetRuntime="MyBatis3" defaultModelType="flat">
+    <context id="default" targetRuntime="MyBatis3DynamicSql" defaultModelType="flat">
         <!-- 插件 -->
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
@@ -18,6 +18,10 @@
             <property name="addRemarkComments" value="true"/>
             <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
         </commentGenerator>
+<!--        <commentGenerator>-->
+<!--            <property name="suppressDate" value="true"/>-->
+<!--            <property name="suppressAllComments" value="true" />-->
+<!--        </commentGenerator>-->
 
         <jdbcConnection driverClass="${jdbc.driver}"
                         connectionURL="${jdbc.url}"
@@ -38,8 +42,8 @@
 
         <javaClientGenerator type="XMLMAPPER" targetPackage="example.mapper" targetProject="src/main/java"/>
 
-        <table schema="localschema" tableName="t_person">
-            <domainObjectRenamingRule searchString="^T" replaceString=""/>
+        <table schema="localschema" tableName="demo_%">
+            <domainObjectRenamingRule searchString="^Demo" replaceString=""/>
         </table>
 
     </context>
